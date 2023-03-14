@@ -1,0 +1,13 @@
+# 🚨 Don't change the code below 👇
+two_digit_number = input("Type a two digit number: ")
+# 🚨 Don't change the code above 👆
+
+####################################
+#Write your code below this line 👇
+
+digit_sum = 0
+
+for digit in two_digit_number:
+    digit_sum += int(digit)
+
+print(digit_sum)
