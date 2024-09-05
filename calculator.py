@@ -17,12 +17,15 @@ def divide(n1, n2):
 def proceed(result):
     resume = input(f"Type 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
     if resume == 'n':
-        return
+        result = 'n'
+        return operation(result)
     elif resume == 'y':
         return operation(result)
 
 def operation(result):
     global firstNumber
+    if result == 'n':
+        firstNumber = input("What's the first number?: ")
     print("+")
     print("-")
     print("*")
