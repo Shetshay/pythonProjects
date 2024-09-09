@@ -64,16 +64,21 @@ def play_a_game(play):
 def LOGO():
     print(art.logo)
     return
+start = play_a_game(start)
 
-if (play_a_game(start)) == 'y':
+if start == 'y':
     #print("*********************")
     computer_cards["0"] = random.choice(cards)
     for x in range(startingCounter):
         drawCardsForMe()
         counter += 1
-
+if start == 'n':
+    print("asdifhsadilfshfaskfldfhjalfkas4308f4u3908fju349f4384hf)")
+else:
     output(my_cards.values(), TOTAL, BOT_TOTAL)
     while display := input("Type 'y' to get another card, type 'n' to pass: ") != "n":
+        if start == 'n':
+            print("output(my_cards.values(), TOTAL, BOT_TOTAL)")
         #print(f"THIS IS DISPLAY IN MAIN WHILE LOOP: {display}")
         drawCardsForMe()
         counter += 1
@@ -86,21 +91,12 @@ if (play_a_game(start)) == 'y':
             botCounter = 0
             my_cards = {}
             computer_cards = {}
-            play_a_game(start)
+            start = play_a_game(start)
+
             computer_cards["0"] = random.choice(cards)
             for x in range(startingCounter):
                 drawCardsForMe()
                 counter += 1
             output(my_cards.values(), TOTAL, BOT_TOTAL)
-            # counter += 1
-
-
-        #else:
-            #print("\n\n That is not 'y' or 'n' please try again. \n\n")
-            #output(my_cards.values(), TOTAL, BOT_TOTAL)
-        #print(f"THIS IS DISPLAY: {display}")
         startingCounter = startingCounter + 1
         botCounter = botCounter + 1
-
-    #winner calculation
-    #winner()
