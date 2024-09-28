@@ -18,24 +18,40 @@ def drawCardsForMe():
      computer_cards[f"{counter}"] = random.choice(cards)
      return my_cards[f"{counter}"]
 
-def output(myDrawnCards, TOTAL, BOT_TOTAL):
-    if TOTAL > 21:
-        loopStatus = False
-        return winner(TOTAL, BOT_TOTAL, loopStatus)
+def output(TOTAL, BOT_TOTAL):
+    # if TOTAL > 21:
+        # loopStatus = False
+        # return winner(TOTAL, BOT_TOTAL, loopStatus)
     for adding in range(counter):
-        if TOTAL > 21:
-            loopStatus = False
-            return winner(TOTAL, BOT_TOTAL, loopStatus)
         TOTAL = my_cards[f"{adding}"] + TOTAL
         BOT_TOTAL = computer_cards[f"{adding}"] + BOT_TOTAL
         if TOTAL > 21:
             loopStatus = False
             return winner(TOTAL, BOT_TOTAL, loopStatus)
     if TOTAL <= 21:
-        print(f"Your cards: [{myDrawnCards}], current score: ", end="")
-    print(TOTAL)
+        print("Your cards: [", end="")
+        for adding in range(counter):
+            print(my_cards[f'{adding}'], end=",")
+        print(f"] current score: ", end="")
     print(f"Computer's first card: {computer_cards['0']}")
+    #print(TOTAL)
+    #print(BOT_TOTAL)
     return TOTAL
+
+def draw():
+    print("Draw 🙃")
+
+def loseOver():
+    print("You went over. You lose 😭")
+
+def lose():
+    print("You lose 😤")
+
+def win():
+    print("You win 😃")
+
+def winOver():
+    print("Opponent went over. You win 😄")
 
 def winner(myTotal, botTotal, endGame):
     print("\n")
@@ -49,6 +65,23 @@ def winner(myTotal, botTotal, endGame):
     for y in computer_cards:
         print(f"{computer_cards[f'{y}']},", end="")
     print(f"] final score: {botTotal}")
+    if myTotal > 21:
+        endGame = True
+        loseOver()
+    if myTotal < 21 and botTotal > 21:
+        endGame = True
+        winOver()
+    if myTotal < 21 and botTotal < 21:
+        if myTotal > botTotal:
+            win()
+            endGame = True
+        else:
+            lose()
+            endGame = True
+
+    if myTotal == botTotal:
+        endGame = True
+        draw()
     #print(display)
     return endGame
 
@@ -61,42 +94,56 @@ def play_a_game(play):
         elif play == 'n':
             return play
 
+def draw_a_card():
+        draw = input("Type 'y' to get another card, type 'n' to pass: ")
+        if draw == 'y':
+            return draw
+        elif draw == 'n':
+            return draw
+        else:
+            draw = input("Please type 'y' to get another card, OR type 'n' to pass. ")
+            return draw
+
 def LOGO():
     print(art.logo)
     return
+
+
 start = play_a_game(start)
 
-if start == 'y':
-    #print("*********************")
+while start != 'n':
     computer_cards["0"] = random.choice(cards)
     for x in range(startingCounter):
         drawCardsForMe()
         counter += 1
-if start == 'n':
-    print("asdifhsadilfshfaskfldfhjalfkas4308f4u3908fju349f4384hf)")
-else:
-    output(my_cards.values(), TOTAL, BOT_TOTAL)
-    while display := input("Type 'y' to get another card, type 'n' to pass: ") != "n":
-        if start == 'n':
-            print("output(my_cards.values(), TOTAL, BOT_TOTAL)")
-        #print(f"THIS IS DISPLAY IN MAIN WHILE LOOP: {display}")
+    if counter == 2:
+        TOTAL = output(TOTAL, BOT_TOTAL)
+    display = draw_a_card()
+    while display != "n":
         drawCardsForMe()
         counter += 1
-        #output(my_cards.values(), TOTAL, BOT_TOTAL)
-
-        if not output(my_cards.values(), TOTAL, BOT_TOTAL):
-
+        TOTAL = output(TOTAL, BOT_TOTAL)
+        display = draw_a_card()
+        #print(TOTAL)
+        #print(BOT_TOTAL)
+        if output(TOTAL, BOT_TOTAL):
+            print("IM OVERRR")
             counter = 0
             startingCounter = 2
             botCounter = 0
             my_cards = {}
-            computer_cards = {}
-            start = play_a_game(start)
-
-            computer_cards["0"] = random.choice(cards)
+            computer_cards = {"0": random.choice(cards)}
+            #start = 'y'
             for x in range(startingCounter):
                 drawCardsForMe()
                 counter += 1
-            output(my_cards.values(), TOTAL, BOT_TOTAL)
-        startingCounter = startingCounter + 1
-        botCounter = botCounter + 1
+            output(TOTAL, BOT_TOTAL)
+        elif display == "n":
+            winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=None)
+            break
+    startingCounter = startingCounter + 1
+    botCounter = botCounter + 1
+    start = play_a_game(start)
+    #break
+
+print("Thank you for playing!")
