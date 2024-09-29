@@ -33,10 +33,11 @@ def output(TOTAL, BOT_TOTAL):
         for adding in range(counter):
             print(my_cards[f'{adding}'], end=",")
         print(f"] current score: ", end="")
+        print(TOTAL)
     print(f"Computer's first card: {computer_cards['0']}")
     #print(TOTAL)
     #print(BOT_TOTAL)
-    return TOTAL
+    return TOTAL, BOT_TOTAL
 
 def draw():
     print("Draw 🙃")
@@ -122,25 +123,30 @@ while start != 'n':
     while display != "n":
         drawCardsForMe()
         counter += 1
-        TOTAL = output(TOTAL, BOT_TOTAL)
+        TOTAL, BOT_TOTAL = output(TOTAL, BOT_TOTAL)
+        #if not TOTAL:
         display = draw_a_card()
         #print(TOTAL)
         #print(BOT_TOTAL)
-        if output(TOTAL, BOT_TOTAL):
+        if TOTAL:
             print("IM OVERRR")
             counter = 0
             startingCounter = 2
             botCounter = 0
             my_cards = {}
+            computer_cards = {}
             computer_cards = {"0": random.choice(cards)}
-            #start = 'y'
             for x in range(startingCounter):
                 drawCardsForMe()
                 counter += 1
-            output(TOTAL, BOT_TOTAL)
-        elif display == "n":
-            winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=None)
-            break
+            winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=True)
+            start = ''
+            play_a_game(start)
+    if display == "n":
+        winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=None)
+        #TOTAL = 0
+        #BOT_TOTAL = 0
+        break
     startingCounter = startingCounter + 1
     botCounter = botCounter + 1
     start = play_a_game(start)
