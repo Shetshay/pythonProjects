@@ -120,8 +120,8 @@ while start != 'n':
     if TOTAL <= 21:
         output()
         display = draw_a_card()
-    while display != "n":
 
+    while display != "n":
         updateMyCards(counter)
         updateBotCards(counter)
         counter += 1
@@ -134,6 +134,7 @@ while start != 'n':
         #print(TOTAL)
         #print(BOT_TOTAL)
         if TOTAL > 21:
+            winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=True)
             counter = 0
             startingCounter = 2
             botCounter = 0
@@ -142,11 +143,16 @@ while start != 'n':
             for x in range(startingCounter):
                 starterCards()
                 counter += 1
-            winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=True)
+
             start = ''
             TOTAL = 0
             BOT_TOTAL = 0
             play_a_game(start)
+            TOTAL = myOutput(TOTAL)
+            BOT_TOTAL = botOutput(BOT_TOTAL)
+            output()
+
+            break
 
         if display == "n":
             print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
@@ -161,6 +167,7 @@ while start != 'n':
             for x in range(startingCounter):
                 starterCards()
                 counter += 1
+
             break
 
     #startingCounter = startingCounter + 1
