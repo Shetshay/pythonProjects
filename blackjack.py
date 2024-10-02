@@ -30,7 +30,6 @@ def myOutput(TOTAL):
     TOTAL = 0
     for adding in range(counter):
         TOTAL = my_cards[f"{adding}"] + TOTAL
-        #print(f"wtf wtf wtf wtf wtf wtf wtf{TOTAL}")
     return TOTAL
 
 def botOutput(BOT_TOTAL):
@@ -141,22 +140,21 @@ while start != 'n':
 
         TOTAL = myOutput(TOTAL)
         BOT_TOTAL = botOutput(BOT_TOTAL)
-        if TOTAL <= 21:
-            output()
-            display = draw_a_card()
-            print(f"This is display 222: {display}")
-            if display == "n":
-                #print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
-                winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
-                TOTAL = 0
-                BOT_TOTAL = 0
-                counter = 0
-                botCounter = 0
-                my_cards = {}
-                computer_cards = {"0": random.choice(cards)}
-                display = ''
-                start = play_a_game(start)
-                break
+
+        if TOTAL <= 21 and display == 'n':
+            #output()
+            #display = draw_a_card()
+            print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
+            winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
+            TOTAL = 0
+            BOT_TOTAL = 0
+            counter = 0
+            botCounter = 0
+            my_cards = {}
+            computer_cards = {"0": random.choice(cards)}
+            display = ''
+            start = play_a_game(start)
+            break
             #print("test")
         if TOTAL > 21:
             print("SHARK BAIT OOHH AHH AHH")
@@ -173,8 +171,6 @@ while start != 'n':
             start = play_a_game(start)
             display = ''
             break
-        #print(display)
-
     start = play_a_game(start)
 
 print("Thank you for playing!")
