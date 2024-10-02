@@ -108,9 +108,8 @@ def output():
     print(TOTAL)
     print(f"Computer's first card: {computer_cards['0']}")
 
-
+start = play_a_game(start)
 while start != 'n':
-    start = play_a_game(start)
     computer_cards["0"] = random.choice(cards)
     for x in range(startingCounter):
         starterCards()
@@ -140,18 +139,13 @@ while start != 'n':
             botCounter = 0
             my_cards = {}
             computer_cards = {"0": random.choice(cards)}
-            # for x in range(startingCounter):
-            #     starterCards()
-            #     counter += 1
             start = ''
             TOTAL = 0
             BOT_TOTAL = 0
-            #play_a_game(start)
             TOTAL = myOutput(TOTAL)
             BOT_TOTAL = botOutput(BOT_TOTAL)
-            #output()
+            start = play_a_game(start)
             break
-
         if display == "n":
             print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
             winner(myTotal = TOTAL, botTotal= BOT_TOTAL, endGame=None)
@@ -162,9 +156,6 @@ while start != 'n':
             botCounter = 0
             my_cards = {}
             computer_cards = {"0": random.choice(cards)}
-            for x in range(startingCounter):
-                starterCards()
-                counter += 1
             break
 
     #startingCounter = startingCounter + 1
