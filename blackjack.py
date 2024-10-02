@@ -108,12 +108,14 @@ def output():
     print(TOTAL)
     print(f"Computer's first card: {computer_cards['0']}")
 
-start = play_a_game(start)
+
 while start != 'n':
+    start = play_a_game(start)
     computer_cards["0"] = random.choice(cards)
     for x in range(startingCounter):
         starterCards()
         counter += 1
+    print(f"WE ARE REDOING, AND THIS IS COUNTER: {counter}")
     if counter == 2:
         TOTAL = myOutput(TOTAL)
         BOT_TOTAL = botOutput(BOT_TOTAL)
@@ -131,8 +133,6 @@ while start != 'n':
         if TOTAL <= 21:
             output()
             display = draw_a_card()
-        #print(TOTAL)
-        #print(BOT_TOTAL)
         if TOTAL > 21:
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=True)
             counter = 0
@@ -140,18 +140,16 @@ while start != 'n':
             botCounter = 0
             my_cards = {}
             computer_cards = {"0": random.choice(cards)}
-            for x in range(startingCounter):
-                starterCards()
-                counter += 1
-
+            # for x in range(startingCounter):
+            #     starterCards()
+            #     counter += 1
             start = ''
             TOTAL = 0
             BOT_TOTAL = 0
-            play_a_game(start)
+            #play_a_game(start)
             TOTAL = myOutput(TOTAL)
             BOT_TOTAL = botOutput(BOT_TOTAL)
-            output()
-
+            #output()
             break
 
         if display == "n":
@@ -167,7 +165,6 @@ while start != 'n':
             for x in range(startingCounter):
                 starterCards()
                 counter += 1
-
             break
 
     #startingCounter = startingCounter + 1
