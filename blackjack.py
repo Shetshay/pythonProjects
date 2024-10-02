@@ -65,7 +65,7 @@ def winner(myTotal, botTotal, endGame):
         endGame = True
         print("Opponent went over. You win 😄")
         return endGame
-    if myTotal <= 21 and botTotal < 21:
+    if myTotal <= 21 and botTotal <= 21:
         if myTotal > botTotal:
             print("You win 😃")
             endGame = True
@@ -120,7 +120,7 @@ while start != 'n':
         BOT_TOTAL = botOutput(BOT_TOTAL)
     if TOTAL <= 21 and display != 'n':
         output()
-        #print("I was just used:")
+        print("I was just used:")
         display = draw_a_card()
     if display == "n":
         #print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
@@ -128,10 +128,10 @@ while start != 'n':
         TOTAL = 0
         BOT_TOTAL = 0
         counter = 0
-        startingCounter = 2
         botCounter = 0
         my_cards = {}
         computer_cards = {"0": random.choice(cards)}
+        display = ''
         start = play_a_game(start)
     #print(f"This is display: {display}")
     while display != "n":
@@ -151,18 +151,17 @@ while start != 'n':
                 TOTAL = 0
                 BOT_TOTAL = 0
                 counter = 0
-                startingCounter = 2
                 botCounter = 0
                 my_cards = {}
                 computer_cards = {"0": random.choice(cards)}
+                display = ''
                 start = play_a_game(start)
                 break
             #print("test")
         if TOTAL > 21:
-            #print("SHARK BAIT OOHH AHH AHH")
+            print("SHARK BAIT OOHH AHH AHH")
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=True)
             counter = 0
-            startingCounter = 2
             botCounter = 0
             my_cards = {}
             computer_cards = {"0": random.choice(cards)}
@@ -172,9 +171,7 @@ while start != 'n':
             TOTAL = myOutput(TOTAL)
             BOT_TOTAL = botOutput(BOT_TOTAL)
             start = play_a_game(start)
-            #print(f"This is display: {display}")
             display = ''
-            #print(f"This is display: {display}")
             break
         #print(display)
 
