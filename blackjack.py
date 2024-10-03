@@ -113,13 +113,12 @@ while start != 'n':
     for x in range(startingCounter):
         starterCards()
         counter += 1
-    #print(f"WE ARE REDOING, AND THIS IS COUNTER: {counter}")
     if counter == 2:
         TOTAL = myOutput(TOTAL)
         BOT_TOTAL = botOutput(BOT_TOTAL)
     if TOTAL <= 21 and display != 'n':
         output()
-        print("I was just used:")
+        #print("I was just used:")
         display = draw_a_card()
     if display == "n":
         #print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
@@ -130,9 +129,10 @@ while start != 'n':
         botCounter = 0
         my_cards = {}
         computer_cards = {"0": random.choice(cards)}
-        display = ''
+
         start = play_a_game(start)
-    #print(f"This is display: {display}")
+        display = 'n'
+
     while display != "n":
         updateMyCards(counter)
         updateBotCards(counter)
@@ -142,9 +142,7 @@ while start != 'n':
         BOT_TOTAL = botOutput(BOT_TOTAL)
 
         if TOTAL <= 21 and display == 'n':
-            #output()
-            #display = draw_a_card()
-            print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
+
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
             TOTAL = 0
             BOT_TOTAL = 0
@@ -155,9 +153,9 @@ while start != 'n':
             display = ''
             start = play_a_game(start)
             break
-            #print("test")
+
         if TOTAL > 21:
-            print("SHARK BAIT OOHH AHH AHH")
+
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=True)
             counter = 0
             botCounter = 0
@@ -171,6 +169,7 @@ while start != 'n':
             start = play_a_game(start)
             display = ''
             break
+    display = '' # if they want the game to be over as soon as they draw, we make sure to reset display for a new round
     start = play_a_game(start)
 
 print("Thank you for playing!")
