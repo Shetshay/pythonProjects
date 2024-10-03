@@ -121,7 +121,7 @@ while start != 'n':
         display = draw_a_card()
     if display == "n":
         #print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
-        print("1st one is the problem")
+        #print("1st one is the problem")
         winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
         TOTAL = 0
         BOT_TOTAL = 0
@@ -147,7 +147,7 @@ while start != 'n':
             if counter > 2 and TOTAL <= 21:
                 display = draw_a_card()
         if TOTAL <= 21 and display == 'n':
-            print("2nd one is the problem")
+            #print("2nd one is the problem")
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
             TOTAL = 0
             BOT_TOTAL = 0
@@ -159,7 +159,7 @@ while start != 'n':
             start = play_a_game(start)
             break
         if TOTAL > 21:
-            print("3rd one is the problem")
+            #print("3rd one is the problem")
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
             TOTAL = 0
             BOT_TOTAL = 0
