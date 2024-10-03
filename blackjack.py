@@ -6,7 +6,6 @@ myFinalScore = ''
 TOTAL = 0
 BOT_TOTAL = 0
 startingCounter = 2
-botCounter = 0
 counter = 0
 my_cards = {}
 computer_cards = {}
@@ -122,54 +121,57 @@ while start != 'n':
         display = draw_a_card()
     if display == "n":
         #print("I NEED TO TEST IF IT ENTERED THIS FUNCTION")
+        print("1st one is the problem")
         winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
         TOTAL = 0
         BOT_TOTAL = 0
         counter = 0
-        botCounter = 0
         my_cards = {}
         computer_cards = {"0": random.choice(cards)}
-
         start = play_a_game(start)
         display = 'n'
 
     while display != "n":
-        updateMyCards(counter)
-        updateBotCards(counter)
-        counter += 1
+        if TOTAL <= 21 and display == 'y':
+            #print(counter)
+            updateMyCards(counter)
+            updateBotCards(counter)
 
-        TOTAL = myOutput(TOTAL)
-        BOT_TOTAL = botOutput(BOT_TOTAL)
-
+            counter += 1
+            TOTAL = myOutput(TOTAL)
+            #print(f"this is the total: {TOTAL}")
+            BOT_TOTAL = botOutput(BOT_TOTAL)
+            if TOTAL <= 21:
+                output()
+            #print(counter)
+            if counter > 2 and TOTAL <= 21:
+                display = draw_a_card()
         if TOTAL <= 21 and display == 'n':
-
+            print("2nd one is the problem")
             winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
             TOTAL = 0
             BOT_TOTAL = 0
             counter = 0
-            botCounter = 0
             my_cards = {}
+            start = ''
             computer_cards = {"0": random.choice(cards)}
             display = ''
             start = play_a_game(start)
             break
-
         if TOTAL > 21:
-
-            winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=True)
+            print("3rd one is the problem")
+            winner(myTotal=TOTAL, botTotal=BOT_TOTAL, endGame=None)
+            TOTAL = 0
+            BOT_TOTAL = 0
             counter = 0
-            botCounter = 0
             my_cards = {}
             computer_cards = {"0": random.choice(cards)}
             start = ''
-            TOTAL = 0
-            BOT_TOTAL = 0
-            TOTAL = myOutput(TOTAL)
-            BOT_TOTAL = botOutput(BOT_TOTAL)
-            start = play_a_game(start)
             display = ''
+            start = play_a_game(start)
             break
+
+        #counter = 0
     display = '' # if they want the game to be over as soon as they draw, we make sure to reset display for a new round
     start = play_a_game(start)
-
 print("Thank you for playing!")
