@@ -51,6 +51,10 @@ def winner(myTotal, botTotal, endGame):
     for y in computer_cards:
         print(f"{computer_cards[f'{y}']},", end="")
     print(f"] final score: {botTotal}")
+    if myTotal == 21 and len(my_cards.keys()) == 2:
+        endGame = True
+        print("Blackjack! 🃏")
+        return endGame
     if myTotal == botTotal and myTotal <= 21:
         endGame = True
         print("Draw 🙃")
