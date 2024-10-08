@@ -57,10 +57,10 @@ def game(a, b):
     global gameOver
     #print(logo)
     print(f"Compare A: {a["name"]}, a(n) {a["description"]}, from {a["country"]}.")
-    print(f"their followers: {a["follower_count"]}")
+    #print(f"their followers: {a["follower_count"]}")
     print(vs)
     print(f"Against B: {b["name"]}, a(n) {b["description"]}, from {b["country"]}.")
-    print(f"their followers: {b["follower_count"]}")
+    #print(f"their followers: {b["follower_count"]}")
     answer = input("Who has more followers? Type 'A' or 'B': ").lower()
     if answer == 'a':
         if a["follower_count"] > b["follower_count"]:
