@@ -14,37 +14,42 @@ def setup():
     a = random.randint(0, len(data) - 1) # comparison A for 50
     b = random.randint(0, len(data) - 1) # comparison B for 50
     # TODO make for loop to check each used new comparison and change if match
+    if counter > 1:
+        a = used[counter - 1]
     while a == b: # REROLL IF == to each other
-        print(f"WE WERE == TO EACH OTHER")
-        a = random.randint(0, len(data) - 1)  # comparison A for 50
+        #print(f"WE WERE == TO EACH OTHER")
+        #a = random.randint(0, len(data) - 1)  # comparison A for 50
         b = random.randint(0, len(data) - 1)  # comparison B for 50
-        print(a, b)
+        #print(a, b)
     #print(f"This is {counter}")
     used.append(counter)
-    used[counter] += a
+    used[counter] = a
     counter += 1
-    print(f"This is {counter}")
+    #print(f"This is {counter}")
     used.append(counter)
-    used[counter] += b
+    used[counter] = b
     counter += 1
-    print(f"This is {counter}")
-    print(used)
+    #print(f"This is {counter}")
+    #print(used)
+
     #print(len(data))
-    for i in range(0,len(used)): # START AT 1 INSTEAD OF 0 BECAUSE THE FIRST RANDOM COMPARE DOESN'T NEED TO BE CHANGED
-        #print(i)
-        while a == used[i]:
-            print(f'MATCH ONE: {a} was equal to {used[i]}')
-            a = random.randint(0, len(data))
-            #used[counter - 2] = a
-            ## CHANGE TO data.[]?
-            print(f'Now im: {a}')
-            print(used)
-        while b == used[i]:
-            print(f'MATCH TWO: {b} was equal to {used[i]}')
-            b = random.randint(0, len(data))
-            #used[counter - 1] = b
-            print(f'Now im: {b}')
-            print(used)
+    # for i in range(1,len(used)): # START AT 1 INSTEAD OF 0 BECAUSE THE FIRST RANDOM COMPARE DOESN'T NEED TO BE CHANGED
+    #     #print(i)
+    #     while a == used[i]:
+    #         print(f'MATCH ONE: {a} was equal to {used[i]}')
+    #         a = random.randint(0, len(data))
+    #         print(used[counter - 2])
+    #         #used[counter - 2] = a
+    #         ## CHANGE TO data.[]?
+    #         print(f'Now im: {a}')
+    #         print(used)
+    #     while b == used[i]:
+    #         print(f'MATCH TWO: {b} was equal to {used[i]}')
+    #         b = random.randint(0, len(data))
+    #         print(used[counter - 1])
+    #         #used[counter - 1] = b
+    #         print(f'Now im: {b}')
+    #         print(used)
     return data[a], data[b]
 
 def game(a, b):
@@ -77,7 +82,6 @@ def game(a, b):
 
     #print(a["follower_count"])
     return score, gameOver
-
 
 
 while not gameOver:
