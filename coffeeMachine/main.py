@@ -6,7 +6,7 @@ drinkCost = 0.0
 profit = 0.0
 
 
-# CHECK IF RESOURCES ARE SUFFICIENT
+#TODO CHECK IF RESOURCES ARE SUFFICIENT
 def resourceChecker(order):
     if resources["water"] < MENU[order]["ingredients"]["water"]:
         print("Sorry there is not enough water.")
@@ -44,12 +44,12 @@ def purchase(order):
         resources["coffee"] -= MENU[order]["ingredients"]["coffee"]
         if order != 'espresso':
             resources["milk"] -= MENU[order]["ingredients"]["milk"]
-    print(f"You paid: {total}")
-    profit += MENU[order]["cost"]
-    total -= MENU[order]["cost"]
-    total = round(total, 2)
-    print(f"Here is ${total} in change.")
-    total = 0.0
+        #print(f"You paid: {total}")
+        profit += MENU[order]["cost"]
+        total -= MENU[order]["cost"]
+        total = round(total, 2)
+        print(f"Here is ${total} in change.")
+        print(f"Enjoy your {order}! ☕")
 
 def orderChooser(order):
     if order == 'espresso':
@@ -83,7 +83,6 @@ while order != 'off':
             purchase(order)
     else:
         print(f"Please enter a valid option.")
-
     if order == 'report':
         report()
         print(f"Money: {profit}")
