@@ -2,7 +2,7 @@ question_data = {
     "response_code": 0,
     "results": [
     {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "The Python programming language gets its name from the British comedy group Monty Python.&quot;",
+     "question": "The Python programming language gets its name from the British comedy group Monty Python?",
      "correct_answer": "True", "incorrect_answers": ["False"]},
     {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
      "question": "Time on Computers is measured via the EPOX System.", "correct_answer": "False",
