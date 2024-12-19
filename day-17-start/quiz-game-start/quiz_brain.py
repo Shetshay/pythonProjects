@@ -23,7 +23,8 @@ class QuizBrain:
         else:
             print("That's wrong.")
         print(f"The correct answer was {correct_answer}.")
-        print(f"This is your current score: {self.score}")
+        print(f"This is your current score: {self.score}/{self.question_number}.")
+        print("\n")
 
 #QuizBrain(question_bank).NextQuestion()
 
