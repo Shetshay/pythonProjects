@@ -10,14 +10,15 @@ tim.shape("arrow")
 #octagon
 #nonagon
 #decagon
+# are the shapes we need to draw on the screen
 
-
-for _ in range(15):
-    tim.forward(10)
-    tim.pu()
-    tim.forward(10)
-    tim.pd()
-
+# of sides / 360 degrees for angle
+counter = 3 # start at triangle
+while counter < 10: # end at decagon
+    for _ in range (counter): # draw each shape, once done with current shape move to the next
+        tim.forward(40) # draw forward
+        tim.right(360/counter) # calculate angle to start rotating to correctly draw the shape
+    counter += 1 # add 1 side to the shape we are drawing until we reach 10 (decagon)
 
 screen = Screen()
 screen.exitonclick()
