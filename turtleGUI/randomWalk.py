@@ -1,35 +1,25 @@
+import turtle
 from turtle import Turtle, Screen
 import random
 
 tim = Turtle()
+turtle.colormode(255)
 
 tim.pensize(10)
 tim.speed(6)
 sides = [90, 180, 270, 360]
-counter = 1
-
-r = 0.2
-g = 0.8
-b = 0.5
-rgb = (r, g, b)
 
 def changeColors():
-    global r
-    global g
-    global b
-    global rgb
-    r = (random.uniform(0.1, 1.0))
-    g = (random.uniform(0.1, 1.0))
-    b = (random.uniform(0.1, 1.0))
+    r = (random.randint(0, 255))
+    g = (random.randint(0, 255))
+    b = (random.randint(0, 255))
     rgb = (r, g, b)
-    return
+    return rgb
 
-while counter < 50:
+for _ in range(50):
     tim.forward(30)
     tim.right(random.choice(sides))
-    changeColors()
-    tim.pencolor(rgb)
-    counter += 1
+    tim.color(changeColors())
 
 screen = Screen()
 screen.exitonclick() #close app on click
