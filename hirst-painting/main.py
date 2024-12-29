@@ -7,6 +7,7 @@ tim = Turtle()  #set turtle class = to tim
 turtle.colormode(255)
 tim.pensize(20) # size of dot
 tim.speed(0) # fastest speed
+tim.hideturtle()
 
 colors = colorgram.extract('image.jpg', 30)
 
