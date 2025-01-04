@@ -28,6 +28,7 @@ while game_is_on:
 
     for seg_num in range(len(segments) - 1, 0, -1):
         new_x = segments[seg_num - 1].xcor() # 01 (second head)
+        #print(new_x)
         new_y = segments[seg_num - 1].ycor() # 00 (third head/last head)
         segments[seg_num].goto(new_x, new_y) # set each head before 02 (head of snake) to follow
     segments[0].forward(20) # 02 (head)
