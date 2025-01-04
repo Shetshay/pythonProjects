@@ -31,18 +31,18 @@ class Snake:
 
     def up(self):
         if self.head.heading() != DOWN:
-            self.segments[0].setheading(UP)
+            self.head.setheading(UP)
         #self.segments[0].forward(20)
     def down(self):
         if self.head.heading() != UP:
-            self.segments[0].setheading(DOWN)
+            self.head.setheading(DOWN)
             #self.segments[0].forward(20)
     def left(self):
         if self.head.heading() != RIGHT:
-            self.segments[0].setheading(LEFT)
+            self.head.setheading(LEFT)
             #self.segments[0].forward(20)
     def right(self):
         if self.head.heading() != LEFT:
-            self.segments[0].setheading(RIGHT)
+            self.head.setheading(RIGHT)
             #self.segments[0].forward(20)
 
