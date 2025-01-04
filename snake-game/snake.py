@@ -1,10 +1,15 @@
 from turtle import Turtle
 
+STARTING_POSITIONS = [(0,0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+
 class Snake:
     def __init__(self):
         self.segments = []
-        self.starting_positions = [(0,0), (-20, 0), (-40, 0)]
-        for starterBlocks in self.starting_positions:
+        self.create_snake()
+
+    def create_snake(self):
+        for starterBlocks in STARTING_POSITIONS:
             snake = Turtle()
             snake.shape("square")
             snake.color("white")
