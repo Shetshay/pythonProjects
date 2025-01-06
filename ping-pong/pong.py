@@ -11,12 +11,14 @@ screen.tracer(0)
 
 game_is_on = True
 
-r_player = Paddle()
-l_player = Paddle()
+r_player = Paddle(350, 0)
+l_player = Paddle(-350, 0)
 
 screen.listen()
-# screen.onkey(left_player.up, "w")
-# screen.onkey(left_player.down, "s")
+
+screen.onkey(l_player.up, "w")
+screen.onkey(l_player.down, "s")
+
 screen.onkey(r_player.up, "i")
 screen.onkey(r_player.down, "k")
 
