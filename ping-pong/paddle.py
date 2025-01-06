@@ -10,6 +10,7 @@ class Paddle(Turtle):
         self.pong.shapesize(stretch_wid=5, stretch_len=1)
         self.pong.goto(x_cor, y_cor)
 
+
     def up(self):
         new_y = self.pong.ycor() + 20
         self.pong.goto(self.pong.xcor(), new_y)
