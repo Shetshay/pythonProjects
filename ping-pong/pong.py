@@ -1,5 +1,6 @@
 from turtle import Screen, Turtle
 from paddle import Paddle
+from ball import Ball
 import random
 import time
 
@@ -17,6 +18,8 @@ game_is_on = True
 r_player = Paddle(350, 0)
 l_player = Paddle(-350, 0)
 
+ball = Ball()
+
 screen.listen()
 
 screen.onkey(l_player.up, "w")
@@ -26,17 +29,9 @@ screen.onkey(r_player.up, "i")
 screen.onkey(r_player.down, "k")
 
 
-ball.color("white")
-ball.shape("circle")
-#ball.goto(0,0)
-ball.setheading(45)
-
-
-
 while game_is_on:
-    screen.update()
     time.sleep(0.1)
-    ball.forward(20)
+    screen.update()
+    ball.move()
 
-    #rightPlayer.move()
 screen.exitonclick()
