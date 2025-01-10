@@ -1,11 +1,12 @@
 from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
-import random
+from scoreboard import Score
 import time
 
 ball = Turtle()
 ball.penup()
+score = Score()
 
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -42,12 +43,10 @@ while game_is_on:
     # Detect R paddle miss
     if ball.xcor() > 380:
         ball.reset_position()
+        score.l_point()
     # Detect L paddle miss
     if ball.xcor() < -380:
         ball.reset_position()
-
-        #ball.restart()
-
-
+        score.r_point()
 
 screen.exitonclick()

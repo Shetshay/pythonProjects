@@ -1,27 +1,27 @@
 from turtle import Turtle
 
-ALIGNMENT = 'center'
-FONT = ('Courier', 24, 'normal')
-
 class Score(Turtle):
     def __init__(self):
-        #self.write(f"Score ={self.score}", True, align="center")
         super().__init__()
         self.color("white")
         self.penup()
-        self.score = 0
-        self.goto(0, 270)
         self.hideturtle()
+        self.l_score = 0
+        self.r_score = 0
         self.update_scoreboard()
 
     def update_scoreboard(self):
-        self.write(f"Score = {self.score}", move=False, align=ALIGNMENT, font=FONT)
+        self.goto(-100, 200)
+        self.write(self.l_score, align="center", font=("Courier", 88, "normal"))
+        self.goto(100, 200)
+        self.write(self.r_score, align="center", font=("Courier", 88, "normal"))
 
-    def game_over(self):
-        self.goto(0,0)
-        self.write(f"Game Over", move=False, align=ALIGNMENT, font=FONT)
-
-    def update_score(self):
+    def l_point(self):
         self.clear()
+        self.l_score += 1
         self.update_scoreboard()
-        self.score += 1
+
+    def r_point(self):
+        self.clear()
+        self.r_score += 1
+        self.update_scoreboard()
