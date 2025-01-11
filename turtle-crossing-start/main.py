@@ -25,11 +25,14 @@ while game_is_on:
     if counter % 80 == 0: # control how frequent we need to spawn cars
         cars.create_cars()
     cars.move_cars()
-    #print(f"This is the PLAYER {player.distance(Turtle)}")
+    #print(f"This is the PLAYER {player.distance(player)}")
     #print(f"This is the CAR{cars.distance(cars)}")
-    # if player.distance(player) < 20:
-    #     score.game_over()
-    #     game_is_on = False
+    #print(cars.cars[0].xcor())
+
+
+    if cars.did_player_touch_car(player):
+        score.game_over()
+        game_is_on = False
 
     if int(player.ycor()) > 280:
         score.update_scoreboard()

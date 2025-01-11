@@ -1,4 +1,5 @@
 from turtle import Turtle
+from player import Player
 import random
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
@@ -31,6 +32,17 @@ class CarManager(Turtle):
         car.shape("square")
         car.shapesize(1, 3, 1)
         self.cars.append(car)
+
+    def did_player_touch_car(self, player):
+
+        for car in range(len(self.cars)):
+            #print(f"PLAYER: {player.xcor()}")
+            #print(f"CAR: {self.cars[car].xcor()}")
+            print(player.distance(self.cars[car]))
+            #if player.ycor() == self.cars[car].ycor() or player.xcor() == self.cars[car].xcor():
+            if player.distance(self.cars[car]) < 30:
+                return True
+
 
 
 
