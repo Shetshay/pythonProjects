@@ -1,5 +1,6 @@
 from idlelib.configdialog import font_sample_text
 from os import write
+from car_manager import CarManager
 from turtle import Turtle
 
 FONT = ("Courier", 24, "normal")
@@ -25,4 +26,6 @@ class Scoreboard(Turtle):
         self.clear()
         self.goto(0,0)
         self.write(f"Game Over", align="center", font=FONT)
+        self.goto(0,-60)
+        self.write(f"Level Highscore: {self.level}", align="center", font=FONT)
 
