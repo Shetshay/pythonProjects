@@ -21,3 +21,4 @@ class Scoreboard(Turtle):
         self.level += 1
         self.write(f"Level: {self.level}", align="center", font=FONT)
 
+
