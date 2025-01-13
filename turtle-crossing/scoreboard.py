@@ -14,13 +14,16 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.level = 0
         self.goto(0, 260)
+        self.game_speed = 0.1
         self.update_scoreboard()
+
 
 
     def update_scoreboard(self):
         self.clear()
         self.level += 1
-        self.write(f"Level: {self.level}", align="center", font=FONT)
+        self.write(f"Level: {self.level}", align="left", font=FONT)
+        self.game_speed *= 0.9
 
     def game_over(self):
         self.clear()

@@ -20,7 +20,7 @@ screen.onkey(player.move, "w") # make sure not to include parenthesis on functio
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(score.game_speed)
     screen.update()
     if counter % cars.car_speed == 0: # control how frequent we need to spawn cars
         cars.create_cars()
