@@ -40,7 +40,7 @@ while is_race_on:
         if turtle.xcor() > 230:
             is_race_on = False
             #print(f"{turtle.pencolor} has won!")
-            if user_bet.lower() == turtle.pencolor.lower():
+            if user_bet.lower() == turtle.pencolor():
                 print(f"Your guess was right! Congrats! 🥳{turtle.pencolor()} has won!")
             else:
                 print(f"Oh no! Your guess was wrong :( {turtle.pencolor()} won, not {user_bet}!")
