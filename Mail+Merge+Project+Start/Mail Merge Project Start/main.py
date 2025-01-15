@@ -4,9 +4,9 @@ with open("./Input/Names/invited_names.txt", mode="r") as names:
     invitedNames = names.readlines() #store invited names into a list using readlines
 
 for name in invitedNames:
-    filepath = f"./Output/ReadyToSend/{name}.txt" # output has an error where name\n
+    new_name = name.replace(" ", "") # if name has any spaces, remove them for easier file navigation
+    filepath = f"./Output/ReadyToSend/{new_name}.txt" # output has an error where name\n
     newFilepath = filepath.replace("\n", "") # fix \n error by replacing it
-    #print(newFilepath)
     with open(newFilepath, mode = 'w') as names: # write to file, if it doesn't exist create it
         new_name = name.strip() # name will make comma go to next line for some reason, use strip to remove special char
         content = names.write(f"Dear {new_name},\n\n" # weird how we have to give it a variable to write in a file
