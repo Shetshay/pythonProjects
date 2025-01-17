@@ -41,11 +41,16 @@ squirrel_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Da
 (squirrel_data["Primary Fur Color"].unique())
 
 squirrel_fur_color = (squirrel_data["Primary Fur Color"].unique()[1::])
+squirrel_count_fur_color = []
 
+for color in squirrel_fur_color:
+    print(squirrel_data.count(squirrel_fur_color))
+
+#squirrel_count_fur_color = (squirrel_data["Primary Fur Color"].count())
 
 fur_color_count = {
     "Fur Color": squirrel_fur_color,
-    #"Count": (squirrel_data["Primary Fur Color"])
+    #"Count": squirrel_count_fur_color
 }
 
 squirrel_query = pandas.DataFrame(fur_color_count)
