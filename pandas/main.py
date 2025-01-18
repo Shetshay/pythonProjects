@@ -34,26 +34,26 @@ import pandas
 
 #practice()
 
-squirrel_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data_20250116.csv")
+data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data_20250116.csv")
 #print(squirrel_data["Primary Fur Color"])
 
 #print(squirrel_data["Primary Fur Color"].unique())
-(squirrel_data["Primary Fur Color"].unique())
+(data["Primary Fur Color"].unique())
 
-squirrel_fur_color = (squirrel_data["Primary Fur Color"].unique()[1::])
-squirrel_count_fur_color = []
+squirrel_fur_color = (data["Primary Fur Color"].unique()[1::])
+gray_squirrel = len(data[data["Primary Fur Color"] == "Gray"]) # inside the data column, if primary fur color == gray
+cinnamon_squirrel = len(data[data["Primary Fur Color"] == "Cinnamon"])
+black_squirrel = len(data[data["Primary Fur Color"] == "Black"])
 
-for color in squirrel_fur_color:
-    print(squirrel_data.count(squirrel_fur_color))
+squirrel_color_count = (gray_squirrel, cinnamon_squirrel, black_squirrel)
 
-#squirrel_count_fur_color = (squirrel_data["Primary Fur Color"].count())
 
 fur_color_count = {
     "Fur Color": squirrel_fur_color,
-    #"Count": squirrel_count_fur_color
+    "Count": squirrel_color_count
 }
 
-squirrel_query = pandas.DataFrame(fur_color_count)
-squirrel_query.to_csv("squirrel_query.csv") # create new data
+df = pandas.DataFrame(fur_color_count)
+df.to_csv("squirrel_query.csv") # create new data
 
-print(squirrel_query)
+print(df)
