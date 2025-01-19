@@ -31,15 +31,19 @@ state.shapesize(0.2)
 
 while not end_game:
     answer_state = screen.textinput(title=f"{score.score}/{amount_of_states}", prompt="What's another state's name?")
-    for guess in range(amount_of_states):
-        if data.state[guess].upper() == answer_state.upper() and already_guessed:
-            #print(already_guessed)
+    for guess in range(amount_of_states): # loop through the 50 states
+        if data.state[guess].upper() == answer_state.upper() and already_guessed: # if the state in the data is what
+            # they guessed and is in the already_guessed list
             print("You already guessed that!")
         if data.state[guess].upper() == answer_state.upper() and answer_state.upper() != already_guessed:
-            if answer_state.upper() not in already_guessed:
-                already_guessed.append(answer_state.upper())
+            # add .upper to make sure whichever caps user uses gets passed through
+            # if the state is equal to the answer state and the answer state is not already in the already guessed list
+            if answer_state.upper() not in already_guessed: # if statement that checks if it is a new state
+                # once inside this if statement we know that the state that was guessed is NOT in the already_guessed
+                # list, meaning it is a NEW guess, do all the appending and adding of score here
+                already_guessed.append(answer_state.upper()) # add the state in all uppercase for easier comparison
                 score.update_score()
-                state.goto(data.x[guess], data.y[guess])
+                state.goto(data.x[guess], data.y[guess]) # go to its x and y coordinate from the csv
                 state.write(answer_state)
             print(already_guessed)
     if score.score >= amount_of_states:
