@@ -29,8 +29,25 @@ state.speed("fastest")
 state.shape("circle")
 state.shapesize(0.2)
 
+missed_states = []
+
 while not end_game:
     answer_state = screen.textinput(title=f"{score.score}/{amount_of_states}", prompt="What's another state's name?")
+    if answer_state == 'exit':
+        end_game = True
+        for state in range(amount_of_states):
+            if data.state[state].upper() not in already_guessed:
+                missed_states.append(data.state[state])
+
+        states_game_score = {
+            "Missed States": missed_states
+            #"Count": squirrel_color_count
+        }
+        df = pandas.DataFrame(states_game_score)
+        df.index += 1 # start series list at 1 instead of 0
+        df.to_csv("states_game_score.csv")  # create new data
+        print(df) # print data frame
+
     for guess in range(amount_of_states): # loop through the 50 states
         if data.state[guess].upper() == answer_state.upper() and already_guessed: # if the state in the data is what
             # they guessed and is in the already_guessed list
@@ -45,7 +62,7 @@ while not end_game:
                 score.update_score()
                 state.goto(data.x[guess], data.y[guess]) # go to its x and y coordinate from the csv
                 state.write(answer_state)
-            print(already_guessed)
+            #print(already_guessed)
     if score.score >= amount_of_states:
         state.hideturtle()
         state.goto(0,0)
