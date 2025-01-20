@@ -35,10 +35,15 @@ while not end_game:
     answer_state = screen.textinput(title=f"{score.score}/{amount_of_states}", prompt="What's another state's name?")
     if answer_state == 'exit':
         end_game = True
-        for state in range(amount_of_states):
-            if data.state[state].upper() not in already_guessed:
-                missed_states.append(data.state[state])
-
+        # for state in range(amount_of_states):
+        #     if data.state[state].upper() not in already_guessed:
+        #         missed_states.append(data.state[state])
+        state.hideturtle()
+        state.goto(0, 0)
+        state.write("Game Over", align=ALIGNMENT, font=FONT)
+        missed_states = [data.state[state] for state in range(50) #implement list comprehension
+                       if data.state[state].upper() not in already_guessed]
+        # set missed_states to data.state[state] if its not been already guessed
         states_game_score = {
             "Missed States": missed_states
             #"Count": squirrel_color_count
@@ -48,8 +53,11 @@ while not end_game:
         df.to_csv("states_game_score.csv")  # create new data
         print(df) # print data frame
 
+    # already_guessed = [print("You already guessed that!") for guess in range(amount_of_states)
+    #                    if data.state[guess].upper() == answer_state.upper() and answer_state.upper() in already_guessed]
     for guess in range(amount_of_states): # loop through the 50 states
-        if data.state[guess].upper() == answer_state.upper() and already_guessed: # if the state in the data is what
+        if data.state[guess].upper() == answer_state.upper() and answer_state.upper() in already_guessed:
+            # if the state in the data is what
             # they guessed and is in the already_guessed list
             print("You already guessed that!")
         if data.state[guess].upper() == answer_state.upper() and answer_state.upper() != already_guessed:
