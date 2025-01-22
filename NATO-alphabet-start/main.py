@@ -33,16 +33,15 @@ print(phonetics_dict) # print the final result of that
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 user_input = input("Enter a word: ").upper() # make sure the input is uppercase
-
 output = [] # instantiate output array for later use
-
 arrayed_user_input = list(user_input) # make the user input a list/array
 
-new_array = [key for key in phonetics_dict.keys()] # dict comprehension to create an array of keys
+phonetics_array = [key for key in phonetics_dict.keys()] # dict comprehension to create an array of keys
     # from phonetics dict
 
 for array_number_pos in range(len(arrayed_user_input)): # loop through the length of the input
-    if arrayed_user_input[array_number_pos] in new_array:
-        output.append(phonetics_dict.get(arrayed_user_input[array_number_pos]))
-
+    if arrayed_user_input[array_number_pos] in phonetics_array: # if the array of the user_input at [0,1,2...] is in the
+        # phonetics array, add it to the output array that we instantiated earlier
+        output.append(phonetics_dict.get(arrayed_user_input[array_number_pos])) # grab the correct phonetic
+        # using the letter
 print(output)
