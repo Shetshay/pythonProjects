@@ -1,6 +1,6 @@
 import pandas
 #def practice():
-    #data = pandas.read_csv("weather_data.csv")
+    #data = pandas.read_csv("weather_data.csv-filepath")
     # #print(type(data))
     # #print(data["temp"])
     #
@@ -30,7 +30,7 @@ import pandas
     # }
     # data_school = pandas.DataFrame(data_dict)
     # print(data_school)
-    # data_school.to_csv("new_data.csv") # create new data
+    # data_school.to_csv("new_data.csv-filepath") # create new data
 
 #practice()
 
@@ -54,6 +54,6 @@ fur_color_count = {
 }
 
 df = pandas.DataFrame(fur_color_count)
-df.to_csv("squirrel_query.csv") # create new data
+df.to_csv("squirrel_query.csv-filepath") # create new data
 
 print(df)

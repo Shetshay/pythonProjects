@@ -50,7 +50,7 @@ while not end_game:
         }
         df = pandas.DataFrame(states_game_score)
         df.index += 1 # start series list at 1 instead of 0
-        df.to_csv("states_game_score.csv")  # create new data
+        df.to_csv("states_game_score.csv-filepath")  # create new data
         print(df) # print data frame
 
     # already_guessed = [print("You already guessed that!") for guess in range(amount_of_states)
@@ -68,7 +68,7 @@ while not end_game:
                 # list, meaning it is a NEW guess, do all the appending and adding of score here
                 already_guessed.append(answer_state.upper()) # add the state in all uppercase for easier comparison
                 score.update_score()
-                state.goto(data.x[guess], data.y[guess]) # go to its x and y coordinate from the csv
+                state.goto(data.x[guess], data.y[guess]) # go to its x and y coordinate from the csv-filepath
                 state.write(answer_state)
             #print(already_guessed)
     if score.score >= amount_of_states:
