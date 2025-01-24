@@ -2,7 +2,7 @@ from tkinter import *
 
 def button_clicked():
     x = float(input.get())
-    return label4.config(text=round((x * 1.6), 1)) # edit the lab4.config to output km from miles integer
+    return label4.config(text=round((x * 1.609), 1)) # edit the lab4.config to output km from miles integer
 
 window = Tk() # setup Tk
 window.title("Mile to Km Converter")
