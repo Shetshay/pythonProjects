@@ -37,7 +37,7 @@ def start_timer():
     else:
         count_down(WORK_MIN)
         title_label.config(text="Work", fg=GREEN)
-        print(reps)
+        #print(reps)
         work_session = math.floor(reps/2)
         emoji = ""
         for _ in range(work_session):
