@@ -1,16 +1,63 @@
 from tkinter import *
+from tkinter import messagebox
+import random
+import pyperclip
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+               'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+               'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    nr_letters = random.randint(6,8)
+    nr_symbols = random.randint(1, 3)
+    nr_numbers = random.randint(1, 3)
+
+    password_list = []
+
+    letters = [password_list.append(random.choice(letters)) for char in range(nr_letters)]
+    symbols = [password_list.append(random.choice(symbols)) for char in range(nr_symbols)]
+    numbers = [password_list.append(random.choice(numbers)) for char in range(nr_numbers)]
+
+    random.shuffle(password_list)
+
+    password = ""
+
+    password = "".join(password_list)
+
+    password_text.delete(0, END)
+    password_text.insert(0, password)
+    pyperclip.copy(password)
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+
+
 def export_data():
-    with open("data.txt", mode="w") as f:
-        f.write(f"{Entry.get(email_username)} | {Entry.get(password_text)} | {Entry.get(website)}")
-    email_username.delete(0,END)
-    password_text.delete(0,END)
-    website.delete(0,END)
-    email_username.insert(0, "changeme@email.com")
+
+    email = Entry.get(email_username)
+    password = Entry.get(password_text)
+    website_text = Entry.get(website)
+
+
+
+    if len(email) == 0 or len(password) == 0:
+        messagebox.showwarning(title="Oops", message= "Please don't leave any fields empty!")
+    else:
+        is_ok = messagebox.askokcancel(title=website_text, message=f"These are the details entered: \nEmail: {email} "
+                                                                   f"\nPassword: {password} \n Is it ok to save?")
+        if is_ok:
+            with open("data.txt", mode="a") as f:
+                f.write(f"{website_text} | {email} | {password}\n")
+            email_username.delete(0,END) #from https://www.tutorialspoint.com/how-to-clear-the-contents-of-a-tkinter-text-widget
+            password_text.delete(0,END)
+            website.delete(0,END)
+            email_username.insert(0, "default@email.com")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -47,10 +94,10 @@ password_title = Label(text="Password: " )
 password_title.grid(column=0 , row=3, sticky="w")
 
 #Password Text
-password_text = Entry(width=21)
+password_text = Entry(width=22)
 password_text.grid(column=1 , row=3, sticky="w")
 #Generate Password Button
-generate_password = Button(text="Generate Password")
+generate_password = Button(text="Generate Password", command=generate_password, width=14)
 generate_password.grid(column=1 , row=3, sticky="e")
 
 #Add Button
