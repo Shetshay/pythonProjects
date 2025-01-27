@@ -1,11 +1,24 @@
-# 1. Create a dictionary in this format:
+# Keyword Method with iterrows()
+# {new_key:new_value for (index, row) in df.iterrows()}
+
 import pandas
-{"A": "Alfa", "B": "Bravo"}
+
 data = pandas.read_csv("nato_phonetic_alphabet.csv")
-phonetics = {row.letter:row.code for index, row in data.itterrows()} # create dict
+#TODO 1. Create a dictionary in this format:
+phonetic_dict = {row.letter: row.code for (index, row) in data.iterrows()}
+print(phonetic_dict)
 
-# 2. Create a list of the phonetic code words from a word that the user inputs.
-user_input = input("Enter a word: ").upper() # make sure the input is uppercase
-output = [phonetics[letter] for letter in user_input]
+#TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
-print(output)
+def generate_phonetic():
+    word = input("Enter a word: ").upper()
+    try:
+        output_list = [phonetic_dict[letter] for letter in word]
+    except KeyError:
+        print("Sorry we only accept letters in the alphabet please.")
+        generate_phonetic()
+    else:
+        print(output_list)
+
+
+generate_phonetic()
