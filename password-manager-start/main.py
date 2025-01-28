@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+import json
+from typing import TextIO
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -39,21 +41,30 @@ def generate_password():
 
 
 def export_data():
-
     email = Entry.get(email_username)
     password = Entry.get(password_text)
     website_text = Entry.get(website)
+    new_data = {
+        website_text: {
+            "email": email,
+            "password": password,
+        }
+    }
 
 
 
-    if len(email) == 0 or len(password) == 0:
+    if len(website_text) == 0 or len(password) == 0:
         messagebox.showwarning(title="Oops", message= "Please don't leave any fields empty!")
     else:
-        is_ok = messagebox.askokcancel(title=website_text, message=f"These are the details entered: \nEmail: {email} "
-                                                                   f"\nPassword: {password} \n Is it ok to save?")
-        if is_ok:
-            with open("data.txt", mode="a") as f:
-                f.write(f"{website_text} | {email} | {password}\n")
+        with open("data.json", "w") as data_file: # type: ignore
+            # Reading old data
+            data = json.load(data_file)
+            # Updating old data with new data
+            data.update(new_data)
+
+        with open("data.json", "w") as data_file:
+            # Saving updated data
+            json.dump(data, data_file, indent=4)
             email_username.delete(0,END) #from https://www.tutorialspoint.com/how-to-clear-the-contents-of-a-tkinter-text-widget
             password_text.delete(0,END)
             website.delete(0,END)
