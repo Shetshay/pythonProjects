@@ -42,7 +42,7 @@ Welcome to my Python projects repository! This repository contains a collection 
    ```
 
 ## Future Improvements
-- Continue to work and update this project!
+- I plan to continue working and update this project!
 
 Feel free to explore! 🚀
 
