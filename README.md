@@ -30,7 +30,7 @@ Welcome to my Python projects repository! This repository contains a collection 
 ## How to Run
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/python-projects.git
+   git clone https://github.com/shetshay/python-projects.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -42,9 +42,7 @@ Welcome to my Python projects repository! This repository contains a collection 
    ```
 
 ## Future Improvements
-- Adding more GUI-based projects
-- Enhancing game logic with AI techniques
-- Expanding data processing projects with real-world datasets
+- Continue to work and update this project!
 
-Feel free to explore and contribute! 🚀
+Feel free to explore! 🚀
 
