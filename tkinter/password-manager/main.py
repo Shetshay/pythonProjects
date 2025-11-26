@@ -35,10 +35,7 @@ def generate_password():
     password_text.insert(0, password)
     pyperclip.copy(password)
 
-
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
-
 
 def export_data():
     email = Entry.get(email_username)
@@ -56,19 +53,35 @@ def export_data():
     if len(website_text) == 0 or len(password) == 0:
         messagebox.showwarning(title="Oops", message= "Please don't leave any fields empty!")
     else:
-        with open("data.json", "w") as data_file: # type: ignore
-            # Reading old data
-            data = json.load(data_file)
-            # Updating old data with new data
+        try:
+            with open("data.json", "r") as data_file: # type: ignore
+                # Reading old data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open("data.json", "w") as data_file:
+                # Updating old data with new data
+                json.dump(new_data, data_file, indent=4)
+        else:
             data.update(new_data)
+            with open("data.json", "w") as data_file:
+                # Updating old data with new data
+                json.dump(new_data, data_file, indent=4)
+        finally:
+            email_username.delete(0,END)  # from https://www.tutorialspoint.com/how-to-clear-the-contents-of-a-tkinter-text-widget
+            password_text.delete(0, END)
+            #website_text.delete(0, END)
 
-        with open("data.json", "w") as data_file:
-            # Saving updated data
-            json.dump(data, data_file, indent=4)
-            email_username.delete(0,END) #from https://www.tutorialspoint.com/how-to-clear-the-contents-of-a-tkinter-text-widget
-            password_text.delete(0,END)
-            website.delete(0,END)
-            email_username.insert(0, "default@email.com")
+
+        # with open("data.json", "w") as data_file:
+        #     # Saving updated data
+        #     json.dump(data, data_file, indent=4)
+        #     email_username.delete(0,END) #from https://www.tutorialspoint.com/how-to-clear-the-contents-of-a-tkinter-text-widget
+        #     password_text.delete(0,END)
+        #     website.delete(0,END)
+        #     email_username.insert(0, "default@email.com")
+        # #except:
+
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -86,11 +99,15 @@ canvas.grid(column=1 , row=0 )
 #Website Label
 website_title = Label(text="Website: ")
 website_title.grid(column=0 , row=1 )
-#Website Text
-website = Entry(width=35)
-website.focus()
 
+#Website Text
+website = Entry(width=22)
+website.focus()
 website.grid(column=1 , row=1, columnspan=2, sticky="w")
+
+#Search Button
+search = Button(text="Search", command=generate_password, width=14)
+search.grid(column=1, row=1, sticky="e")
 
 #Email/Username Label
 email_username_title = Label(text="Email/Username: ")
@@ -107,6 +124,7 @@ password_title.grid(column=0 , row=3, sticky="w")
 #Password Text
 password_text = Entry(width=22)
 password_text.grid(column=1 , row=3, sticky="w")
+
 #Generate Password Button
 generate_password = Button(text="Generate Password", command=generate_password, width=14)
 generate_password.grid(column=1 , row=3, sticky="e")
