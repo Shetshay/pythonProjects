@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+import time
 
 MY_LAT = 35.373291 # Your latitude 35.373291
 MY_LONG = -119.018715 # Your longitude -119.018715
@@ -38,11 +39,17 @@ time_now = datetime.now()
 # Then send me an email to tell me to look up.
 result = iss_location()
 
+
+print(result)
+
 print(sunset)
 print(sunrise)
 print(time_now.hour)
 
-#if result and sunrise
+while True:
+    time.sleep(60)
+    if result and (sunset <= time_now.hour or time_now.hour <= sunrise):
+        print("Look Up!!")
 
 
 
